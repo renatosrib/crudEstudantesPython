@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang = "en">
+   <head></head>
+   <body>
+
+      <h3>
+         <a href = "{{ url_for('show_all') }}">Cadastro de estudantes</a>
+      </h3>
+
+      <hr/>
+      {%- for message in get_flashed_messages() %}
+         {{ message }}
+      {%- endfor %}
+
+      <h3>Estudantes Cadastrados (<a href = "{{ url_for('new') }}">Adicionar Estudante
+         </a>)</h3>
+
+      <table border="1">
+         <thead>
+            <tr>
+               <th>Nome</th>
+               <th>Cidade</th>
+               <th>Endereço</th>
+               <th>Código</th>
+		           <th>Editar</th>
+	       <th>Remove</th>
+            </tr>
+         </thead>
+
+         <tbody>
+            {% for student in students %}
+               <tr>
+                  <td>{{ student.name }}</td>
+                  <td>{{ student.city }}</td>
+                  <td>{{ student.addr }}</td>
+                  <td>{{ student.pin }}</td>
+		  <td><a href="/edit/{{student.id}}">Editar</a></td>
+		  <td><a href="/delete/{{student.id}}">Remove this</a></td>
+               </tr>
+            {% endfor %}
+         </tbody>
+      </table>
+
+   </body>
+</html>

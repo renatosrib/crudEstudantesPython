@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+   <body>
+
+      <h3>Editar Estudante</h3>
+      <hr/>
+
+      {%- for category, message in get_flashed_messages(with_categories = true) %}
+         <div class = "alert alert-danger">
+            {{ message }}
+         </div>
+      {%- endfor %}
+
+      <form action = "{{ request.path }}" method = "post">
+         <label for = "name">Nome</label><br>
+         <input type = "text" name = "name" value="{{student.name}}" placeholder = "nome" /><br>
+         <label for = "email">Cidade</label><br>
+         <input type = "text" name = "city" value="{{student.city}}" placeholder = "cidade" /><br>
+         <label for = "addr">Endereço</label><br>
+         <textarea name = "addr"  placeholder = "endereço">{{student.addr}}</textarea><br>
+         <label for = "PIN">Prontuário</label><br>
+         <input type = "text" name = "pin" value="{{student.pin}}" placeholder = "prontuário" /><br>
+         <input type = "submit" value = "Gravar" />
+      </form>
+
+   </body>
